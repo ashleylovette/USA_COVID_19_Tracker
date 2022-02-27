@@ -2,7 +2,8 @@ class CLI
     def run 
         system('clear')
         greeting
-        menu
+        while menu != exit
+        end
         end_program
     end
 
@@ -18,6 +19,8 @@ end
 def menu
     list_options
     input = gets.chomp.downcase
+    choose_option(input)
+    return input
 end
 
 def list_options
@@ -25,6 +28,15 @@ def list_options
     1.
     2.
     3.
-    Which one do you prefer?
+Which one do you prefer?
     DOC
+end
+
+def choose_option(option)
+    case option
+    when "1"
+        puts "Number one is chosen."
+    when "2"
+        puts "Number two is chosen."
+    end
 end
