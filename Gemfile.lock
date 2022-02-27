@@ -1,0 +1,33 @@
+PATH
+  remote: .
+  specs:
+    USA_COVID_19_Tracker (0.1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    date (3.2.2)
+    nokogiri (1.13.3-arm64-darwin)
+      racc (~> 1.4)
+    open-uri (0.1.0)
+      stringio
+      time
+      uri
+    racc (1.6.0)
+    rake (13.0.6)
+    stringio (3.0.1)
+    time (0.2.0)
+      date
+    uri (0.11.0)
+
+PLATFORMS
+  arm64-darwin-20
+
+DEPENDENCIES
+  USA_COVID_19_Tracker!
+  nokogiri (~> 1.12, >= 1.12.5)
+  open-uri (~> 0.1.0)
+  rake (~> 13.0)
+
+BUNDLED WITH
+   2.2.3
