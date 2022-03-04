@@ -6,6 +6,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    bcrypt (3.1.16)
     date (3.2.2)
     nokogiri (1.13.3-arm64-darwin)
       racc (~> 1.4)
@@ -25,6 +26,7 @@ PLATFORMS
 
 DEPENDENCIES
   USA_COVID_19_Tracker!
+  bcrypt
   nokogiri (~> 1.12, >= 1.12.5)
   open-uri (~> 0.1.0)
   rake (~> 13.0)
