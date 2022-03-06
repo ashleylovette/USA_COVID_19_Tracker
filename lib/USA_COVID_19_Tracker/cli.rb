@@ -1,7 +1,8 @@
 class CLI 
     def run
-        CRUD.create_secure_users
+        scrape
         system('clear')
+        CRUD.create_secure_users
         greeting
         login
         while menu != exit
@@ -36,10 +37,12 @@ class CLI
 end
 
 def menu
-    list_options
-    input = gets.chomp.downcase
+    puts "1. Top 10 States with the most confirmed cases"
+    puts "2. Top 10 States with the least confirmed cases"
+    puts "What would you like to choose?"
+    input = gets.chomp
     choose_option(input)
-    return input
+    input
 end
 
 def list_options
@@ -54,8 +57,18 @@ end
 def choose_option(option)
     case option
     when "1"
-        puts "Number one is chosen."
+        State.all[0..9].each_with_index do |state, i|
+          puts "#{i + 1}. #{state.name} confirmed cases: #{state.confirmed_cases}"
+        end
     when "2"
-        puts "Number two is chosen."
+        states = State.all.sort_by { |state| state.confirmed_cases }
+        states[0..9].each_with_index do |state, i|
+        puts "#{i + 1}. #{state.name} confirmed cases: #{state.confirmed_cases}"
+        end
     end
+end
+
+def scrape
+    Scraper.scrape_usa
+    Scraper.scrape_states
 end

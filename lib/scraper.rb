@@ -18,8 +18,21 @@ class Scraper
     end
     
     def self.scrape_states
+        puts "Scraping States stats"
+        doc = Nokogiri::HTML(URI.open(URL))
+        states_table = doc.css('tbody tr')
 
+        states_table[1..51].each do |row|
+            name = row.css('td')[1].text.split(" ").join(" ")
+            cases = text_to_integer( row.css('td')[2].text)
+            deaths = text_to_integer( row.css('td')[4].text)
+            recoveries = text_to_integer( row.css('td')[6].text)
+            if name != "District Of Columbia"
+                State.new(name: name, overall_deaths:deaths, confirmed_cases: cases, recoveries:recoveries)
+            end
+        end
     end
+
 end
 
 Scraper.scrape_usa
